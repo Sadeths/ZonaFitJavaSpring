@@ -15,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import st.zona_fit.modelo.Cliente;
 import st.zona_fit.servicio.IClienteServicio;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class ZonaFitApplication implements CommandLineRunner {
 
 	@Autowired
