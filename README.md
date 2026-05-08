@@ -1,30 +1,62 @@
-# 🏋️‍♂️ Zona Fit - Gestión de Clientes de Gimnasio
+# 🏋️‍♂️ Zona Fit - Sistema de Gestión de Clientes
 
 ![Java](https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot)
+![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-Database-blue?style=for-the-badge)
+![Swing](https://img.shields.io/badge/Java%20Swing-GUI-purple?style=for-the-badge)
+![FlatLaf](https://img.shields.io/badge/FlatLaf-Dark%20Mode-black?style=for-the-badge)
 ![Maven](https://img.shields.io/badge/Maven-Build-red?style=for-the-badge&logo=apachemaven)
-![JPA](https://img.shields.io/badge/Spring%20Data%20JPA-Database-blue?style=for-the-badge)
 ![Lombok](https://img.shields.io/badge/Lombok-Clean%20Code-pink?style=for-the-badge)
-
-## 📌 Descripción del proyecto
-
-**Zona Fit** es una aplicación de consola desarrollada con **Java Spring Boot**, enfocada en la gestión de clientes de un gimnasio.
-
-El sistema permite realizar operaciones CRUD, es decir: **crear, listar, buscar, modificar y eliminar clientes**.  
-Este proyecto fue creado como práctica para reforzar conocimientos de **Spring Boot**, **Spring Data JPA**, **arquitectura por capas**, **entidades**, **repositorios**, **servicios** e **inyección de dependencias**.
 
 ---
 
-## 🚀 Funcionalidades principales
+## 📌 Descripción del proyecto
 
-✅ Listar todos los clientes registrados  
-✅ Buscar un cliente por ID  
-✅ Agregar nuevos clientes  
-✅ Modificar información de clientes existentes  
-✅ Eliminar clientes del sistema  
-✅ Menú interactivo desde consola  
-✅ Persistencia de datos usando Spring Data JPA  
-✅ Separación del proyecto por capas  
+**Zona Fit** es una aplicación desarrollada con **Java Spring Boot** para la gestión de clientes de un gimnasio.
+
+El proyecto inició como una aplicación de consola, pero posteriormente fue mejorado con una **interfaz gráfica usando Java Swing**, permitiendo administrar clientes de una forma más visual, cómoda e intuitiva.
+
+El sistema permite realizar operaciones CRUD completas:
+
+- Crear clientes
+- Listar clientes
+- Actualizar información de clientes
+- Eliminar clientes
+- Visualizar clientes en una tabla
+- Seleccionar registros desde la interfaz gráfica
+
+---
+
+## ✨ Características principales
+
+✅ Aplicación desarrollada con Java y Spring Boot  
+✅ Interfaz gráfica con Java Swing  
+✅ Modo oscuro utilizando FlatLaf  
+✅ Gestión completa de clientes  
+✅ Tabla visual para mostrar registros  
+✅ Botones para guardar, eliminar y limpiar formulario  
+✅ Arquitectura organizada por capas  
+✅ Persistencia de datos con Spring Data JPA  
+✅ Uso de repositorios, servicios e interfaces  
+✅ Código más limpio con Lombok  
+✅ Aplicación preparada para portafolio en GitHub  
+
+---
+
+## 🖥️ Interfaz gráfica
+
+La aplicación cuenta con una ventana principal donde se pueden administrar los clientes del gimnasio.
+
+Desde la interfaz se puede:
+
+- Ingresar nombre del cliente
+- Ingresar apellido del cliente
+- Ingresar número de membresía
+- Guardar un nuevo cliente
+- Seleccionar un cliente desde la tabla
+- Modificar datos de un cliente existente
+- Eliminar un cliente seleccionado
+- Limpiar el formulario
 
 ---
 
@@ -33,12 +65,15 @@ Este proyecto fue creado como práctica para reforzar conocimientos de **Spring 
 | Tecnología | Descripción |
 |----------|-------------|
 | Java | Lenguaje principal del proyecto |
-| Spring Boot | Framework para crear la aplicación |
+| Spring Boot | Framework principal de la aplicación |
 | Spring Data JPA | Manejo de persistencia y operaciones CRUD |
-| Jakarta Persistence | Uso de entidades JPA |
+| Jakarta Persistence | Definición de entidades JPA |
+| Java Swing | Creación de la interfaz gráfica |
+| FlatLaf | Diseño visual moderno con modo oscuro |
 | Lombok | Reducción de código repetitivo |
 | Maven | Gestión de dependencias y construcción del proyecto |
 | SLF4J Logger | Registro de mensajes en consola |
+| MySQL | Base de datos utilizada para almacenar clientes |
 
 ---
 
@@ -48,6 +83,10 @@ Este proyecto fue creado como práctica para reforzar conocimientos de **Spring 
 src/main/java/st/zona_fit
 │
 ├── ZonaFitApplication.java
+├── ZonaFitSwing.java
+│
+├── gui
+│   └── ZonaFitForma.java
 │
 ├── modelo
 │   └── Cliente.java
@@ -64,29 +103,45 @@ src/main/java/st/zona_fit
 
 ## 🧱 Arquitectura del sistema
 
-El proyecto está organizado bajo una arquitectura por capas:
+El proyecto está estructurado bajo una arquitectura por capas, separando responsabilidades para mantener un código más ordenado, escalable y fácil de mantener.
 
 ### 1. Capa principal
 
-Contiene la clase `ZonaFitApplication`, encargada de iniciar la aplicación y mostrar el menú interactivo en consola.
+Contiene las clases encargadas de iniciar la aplicación.
 
-### 2. Capa modelo
+- `ZonaFitApplication`: versión de consola.
+- `ZonaFitSwing`: versión con interfaz gráfica Swing.
 
-Contiene la entidad `Cliente`, que representa la tabla o estructura principal del sistema.
+### 2. Capa GUI
 
-### 3. Capa repositorio
+Contiene la interfaz gráfica del sistema.
 
-Contiene la interfaz `ClienteRepositorio`, la cual extiende de `JpaRepository` para acceder a operaciones CRUD de forma automática.
+- `ZonaFitForma`: ventana principal donde se gestionan los clientes.
 
-### 4. Capa servicio
+### 3. Capa modelo
 
-Contiene la interfaz `IClienteServicio` y su implementación `ClienteServicio`, donde se define la lógica principal para gestionar clientes.
+Contiene la entidad principal del sistema.
+
+- `Cliente`: representa a un cliente del gimnasio.
+
+### 4. Capa repositorio
+
+Contiene la interfaz encargada de comunicarse con la base de datos.
+
+- `ClienteRepositorio`: extiende de `JpaRepository`.
+
+### 5. Capa servicio
+
+Contiene la lógica de negocio del sistema.
+
+- `IClienteServicio`: define las operaciones disponibles.
+- `ClienteServicio`: implementa las operaciones del sistema.
 
 ---
 
 ## 👤 Modelo Cliente
 
-La entidad `Cliente` contiene los siguientes atributos:
+La entidad `Cliente` representa los datos principales de cada cliente registrado en el gimnasio.
 
 | Campo | Tipo | Descripción |
 |------|------|-------------|
@@ -97,63 +152,47 @@ La entidad `Cliente` contiene los siguientes atributos:
 
 ---
 
-## 🖥️ Menú de la aplicación
+## 🧩 Funcionalidades implementadas
 
-Al ejecutar el programa, se muestra un menú en consola como el siguiente:
-
-```text
-*** Aplicacion Zona Fit (GYM) ***
-
-1. Listar Clientes
-2. Buscar Clientes
-3. Agregar Clientes
-4. Modificar Clientes
-5. Eliminar Clientes
-6. Salir
-
-Elige una opcion:
-```
+| Funcionalidad | Descripción |
+|-------------|-------------|
+| Listar clientes | Muestra todos los clientes registrados en una tabla |
+| Agregar cliente | Permite registrar un nuevo cliente |
+| Modificar cliente | Permite actualizar la información de un cliente existente |
+| Eliminar cliente | Elimina un cliente seleccionado |
+| Limpiar formulario | Limpia los campos de texto y deselecciona la tabla |
+| Selección desde tabla | Al seleccionar un cliente, sus datos se cargan en el formulario |
+| Modo oscuro | La interfaz usa FlatLaf con tema oscuro |
 
 ---
 
-## 📋 Ejemplo de uso
+## 🖼️ Interfaz del sistema
 
-### Agregar un cliente
+La ventana principal incluye:
 
-```text
---- Agregar Cliente ---
-
-Nombre:
-Juan
-
-Apellido:
-Pérez
-
-Membresia:
-1001
-```
-
-Resultado esperado:
+- Tabla de clientes
+- Campo para nombre
+- Campo para apellido
+- Campo para membresía
+- Botón Guardar
+- Botón Eliminar
+- Botón Limpiar
 
 ```text
-Cliente agregado: Cliente(id=1, nombre=Juan, apellido=Pérez, membresia=1001)
-```
+-------------------------------------------------
+|                 Zona Fit                      |
+-------------------------------------------------
+| ID | Nombre | Apellido | Membresía             |
+-------------------------------------------------
+| 1  | Juan   | Pérez    | 1001                  |
+| 2  | Ana    | López    | 1002                  |
+-------------------------------------------------
 
----
+Nombre:     [________________]
+Apellido:   [________________]
+Membresía:  [________________]
 
-### Buscar un cliente
-
-```text
---- Buscar Cliente por ID ---
-
-ID cliente a buscar:
-1
-```
-
-Resultado esperado:
-
-```text
-Cliente encontrado: Cliente(id=1, nombre=Juan, apellido=Pérez, membresia=1001)
+[ Guardar ]   [ Eliminar ]   [ Limpiar ]
 ```
 
 ---
@@ -166,7 +205,7 @@ Cliente encontrado: Cliente(id=1, nombre=Juan, apellido=Pérez, membresia=1001)
 git clone https://github.com/Sadeths/zona-fit.git
 ```
 
-### 2. Entrar al proyecto
+### 2. Entrar a la carpeta del proyecto
 
 ```bash
 cd zona-fit
@@ -178,23 +217,31 @@ cd zona-fit
 mvn clean compile
 ```
 
-### 4. Ejecutar la aplicación
+### 4. Ejecutar la aplicación con interfaz gráfica
 
 ```bash
-mvn spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.main-class=st.zona_fit.ZonaFitSwing
 ```
+
+También puedes ejecutar directamente la clase:
+
+```text
+st.zona_fit.ZonaFitSwing
+```
+
+desde tu IDE, como IntelliJ IDEA o VS Code.
 
 ---
 
-## 🔧 Configuración requerida
+## 🔧 Configuración de base de datos
 
-Antes de ejecutar el proyecto, asegúrate de tener configurada la conexión a la base de datos en el archivo:
+Antes de ejecutar el proyecto, se debe configurar la conexión a la base de datos en el archivo:
 
 ```text
 src/main/resources/application.properties
 ```
 
-Ejemplo de configuración:
+Ejemplo de configuración con MySQL:
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/zona_fit
@@ -206,65 +253,143 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 ```
 
-> Nota: Debes tener creada la base de datos `zona_fit` en MySQL o adaptar la configuración según tu entorno.
+> Nota: Debes crear previamente la base de datos `zona_fit` en MySQL o adaptar la configuración según tu entorno.
 
 ---
 
-## 📌 Operaciones implementadas
+## 📦 Dependencias principales
 
-| Opción | Acción | Descripción |
-|------|--------|-------------|
-| 1 | Listar clientes | Muestra todos los clientes registrados |
-| 2 | Buscar cliente | Busca un cliente usando su ID |
-| 3 | Agregar cliente | Registra un nuevo cliente |
-| 4 | Modificar cliente | Actualiza los datos de un cliente existente |
-| 5 | Eliminar cliente | Elimina un cliente del sistema |
-| 6 | Salir | Finaliza la aplicación |
+El proyecto utiliza dependencias como:
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>com.formdev</groupId>
+    <artifactId>flatlaf</artifactId>
+    <version>3.5.1</version>
+</dependency>
+
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <scope>runtime</scope>
+</dependency>
+
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <optional>true</optional>
+</dependency>
+```
+
+---
+
+## 🚀 Flujo de uso de la aplicación
+
+### Agregar cliente
+
+1. Escribir el nombre.
+2. Escribir el apellido.
+3. Ingresar el número de membresía.
+4. Presionar el botón **Guardar**.
+5. El cliente aparecerá automáticamente en la tabla.
+
+---
+
+### Modificar cliente
+
+1. Seleccionar un cliente desde la tabla.
+2. Sus datos se cargarán en el formulario.
+3. Modificar los campos necesarios.
+4. Presionar **Guardar**.
+5. La tabla se actualizará con los nuevos datos.
+
+---
+
+### Eliminar cliente
+
+1. Seleccionar un cliente desde la tabla.
+2. Presionar el botón **Eliminar**.
+3. El cliente será eliminado de la base de datos.
+4. La tabla se actualizará automáticamente.
+
+---
+
+### Limpiar formulario
+
+1. Presionar el botón **Limpiar**.
+2. Los campos se vaciarán.
+3. Se quitará la selección activa de la tabla.
 
 ---
 
 ## 🎯 Objetivo del proyecto
 
-El objetivo de este proyecto es practicar y aplicar los fundamentos de **Spring Boot** en una aplicación real de consola, utilizando una estructura organizada y buenas prácticas de desarrollo.
+El objetivo principal de este proyecto es practicar el desarrollo de aplicaciones con **Java Spring Boot**, aplicando conceptos fundamentales de backend y complementándolos con una interfaz gráfica de escritorio usando **Java Swing**.
 
-Conceptos aplicados:
+Este proyecto permite reforzar conocimientos como:
 
 - Programación orientada a objetos
-- Entidades JPA
-- Repositorios con Spring Data JPA
-- Servicios e interfaces
-- Inyección de dependencias
-- Operaciones CRUD
-- Uso de Maven
-- Uso de Logger
-- Separación por capas
+- Arquitectura por capas
+- Creación de entidades JPA
+- Uso de repositorios con Spring Data JPA
+- Implementación de servicios e interfaces
+- Inyección de dependencias con Spring
+- Persistencia de datos en base de datos
+- Creación de interfaces gráficas con Java Swing
+- Uso de tablas, formularios y eventos
+- Integración de Spring Boot con aplicaciones de escritorio
 
 ---
 
 ## 💡 Aprendizajes obtenidos
 
-Durante el desarrollo de este proyecto se reforzaron conocimientos importantes como:
+Durante el desarrollo de este proyecto se aplicaron conocimientos importantes como:
 
-- Cómo crear una aplicación con Spring Boot.
-- Cómo usar `CommandLineRunner` para ejecutar lógica desde consola.
-- Cómo conectar una entidad con una base de datos.
-- Cómo usar `JpaRepository` para simplificar operaciones CRUD.
-- Cómo separar responsabilidades usando capas.
-- Cómo implementar servicios mediante interfaces.
-- Cómo registrar mensajes usando `Logger`.
+- Crear una aplicación Spring Boot desde cero.
+- Implementar una entidad con JPA.
+- Usar `JpaRepository` para operaciones CRUD.
+- Crear servicios para separar la lógica del sistema.
+- Inyectar dependencias con `@Autowired`.
+- Crear una interfaz gráfica con Swing.
+- Usar `JTable` para mostrar información.
+- Manejar eventos de botones.
+- Seleccionar registros desde una tabla.
+- Actualizar datos desde un formulario.
+- Aplicar un tema visual oscuro con FlatLaf.
+- Ejecutar una aplicación Spring Boot sin servidor web.
 
 ---
 
 ## 📈 Posibles mejoras futuras
 
-🚀 Agregar una interfaz gráfica  
-🚀 Crear una API REST con controladores  
-🚀 Implementar validaciones en los datos ingresados  
-🚀 Agregar manejo de excepciones personalizado  
+🚀 Crear una API REST para consumir los datos desde frontend web  
+🚀 Agregar validaciones más avanzadas en los campos  
+🚀 Implementar manejo de excepciones personalizado  
+🚀 Agregar buscador de clientes por nombre o membresía  
+🚀 Implementar reportes de clientes activos  
+🚀 Agregar autenticación de usuarios  
 🚀 Crear pruebas unitarias  
-🚀 Implementar autenticación de usuarios  
-🚀 Agregar reportes de clientes activos  
-🚀 Mejorar el diseño del menú en consola  
+🚀 Agregar diseño más personalizado a la interfaz  
+🚀 Exportar listado de clientes a PDF o Excel  
+🚀 Crear dashboard con estadísticas del gimnasio  
+
+---
+
+## 📌 Estado del proyecto
+
+✅ Proyecto funcional  
+✅ CRUD completo implementado  
+✅ Interfaz gráfica agregada  
+✅ Modo oscuro implementado  
+✅ Base de datos integrada con Spring Data JPA  
+✅ Arquitectura por capas aplicada  
+✅ Listo para subir a GitHub  
+✅ Ideal para portafolio de Java / Spring Boot  
 
 ---
 
@@ -272,21 +397,14 @@ Durante el desarrollo de este proyecto se reforzaron conocimientos importantes c
 
 **Samahel Thomas**
 
-Proyecto desarrollado como parte de mi aprendizaje en **Java**, **Spring Boot** y desarrollo backend.
+Proyecto desarrollado como parte de mi aprendizaje en **Java**, **Spring Boot**, **Spring Data JPA** y desarrollo de aplicaciones de escritorio con **Swing**.
 
----
+- GitHub: [Sadeths](https://github.com/Sadeths)
+- LinkedIn: [Samahel Thomas](https://www.linkedin.com/in/samahel-thomas-7330211ba)
 
-
-## 📄 Estado del proyecto
-
-✅ Proyecto funcional  
-✅ CRUD completo desde consola  
-✅ Estructura por capas implementada  
-✅ Conexión preparada para base de datos  
-✅ Listo para subir a GitHub como parte de portafolio  
 
 ---
 
 # 🏋️‍♂️ Zona Fit
 
-Aplicación de gestión de clientes para gimnasio desarrollada con Java Spring Boot.
+Sistema de gestión de clientes para gimnasio desarrollado con **Java Spring Boot**, **Spring Data JPA**, **MySQL** y **Java Swing**.
