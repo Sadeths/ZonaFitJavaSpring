@@ -1,10 +1,12 @@
 # 🏋️‍♂️ Zona Fit - Sistema de Gestión de Clientes
 
-![Java](https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=openjdk)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot)
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.2-brightgreen?style=for-the-badge&logo=springboot)
 ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-Database-blue?style=for-the-badge)
-![Swing](https://img.shields.io/badge/Java%20Swing-GUI-purple?style=for-the-badge)
-![FlatLaf](https://img.shields.io/badge/FlatLaf-Dark%20Mode-black?style=for-the-badge)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql)
+![PrimeFaces](https://img.shields.io/badge/PrimeFaces-Web%20UI-purple?style=for-the-badge)
+![JSF](https://img.shields.io/badge/JSF-XHTML-lightgrey?style=for-the-badge)
+![Swing](https://img.shields.io/badge/Java%20Swing-Desktop%20GUI-yellow?style=for-the-badge)
 ![Maven](https://img.shields.io/badge/Maven-Build-red?style=for-the-badge&logo=apachemaven)
 ![Lombok](https://img.shields.io/badge/Lombok-Clean%20Code-pink?style=for-the-badge)
 
@@ -12,51 +14,37 @@
 
 ## 📌 Descripción del proyecto
 
-**Zona Fit** es una aplicación desarrollada con **Java Spring Boot** para la gestión de clientes de un gimnasio.
+**Zona Fit** es un sistema de gestión de clientes para gimnasio desarrollado con **Java Spring Boot**.
 
-El proyecto inició como una aplicación de consola, pero posteriormente fue mejorado con una **interfaz gráfica usando Java Swing**, permitiendo administrar clientes de una forma más visual, cómoda e intuitiva.
+El proyecto inició como una aplicación de consola, posteriormente fue mejorado con una interfaz gráfica de escritorio utilizando **Java Swing**, y finalmente se agregó una versión web desarrollada con **JoinFaces, JSF y PrimeFaces**.
 
-El sistema permite realizar operaciones CRUD completas:
-
-- Crear clientes
-- Listar clientes
-- Actualizar información de clientes
-- Eliminar clientes
-- Visualizar clientes en una tabla
-- Seleccionar registros desde la interfaz gráfica
+El sistema permite realizar operaciones CRUD completas sobre los clientes del gimnasio, manteniendo una arquitectura organizada por capas y una conexión a base de datos mediante **Spring Data JPA** y **MySQL**.
 
 ---
 
-## ✨ Características principales
+## 🚀 Funcionalidades principales
 
-✅ Aplicación desarrollada con Java y Spring Boot  
-✅ Interfaz gráfica con Java Swing  
-✅ Modo oscuro utilizando FlatLaf  
-✅ Gestión completa de clientes  
-✅ Tabla visual para mostrar registros  
-✅ Botones para guardar, eliminar y limpiar formulario  
-✅ Arquitectura organizada por capas  
-✅ Persistencia de datos con Spring Data JPA  
-✅ Uso de repositorios, servicios e interfaces  
-✅ Código más limpio con Lombok  
-✅ Aplicación preparada para portafolio en GitHub  
+✅ Registrar nuevos clientes  
+✅ Listar clientes almacenados  
+✅ Editar información de clientes existentes  
+✅ Eliminar clientes del sistema  
+✅ Visualizar clientes en una tabla  
+✅ Gestionar clientes desde consola  
+✅ Gestionar clientes desde interfaz gráfica Swing  
+✅ Gestionar clientes desde una interfaz web con PrimeFaces  
+✅ Uso de base de datos MySQL  
+✅ Arquitectura por capas  
+✅ Separación entre modelo, repositorio, servicio, controlador y vista  
 
 ---
 
-## 🖥️ Interfaz gráfica
+## 🧩 Versiones del proyecto
 
-La aplicación cuenta con una ventana principal donde se pueden administrar los clientes del gimnasio.
-
-Desde la interfaz se puede:
-
-- Ingresar nombre del cliente
-- Ingresar apellido del cliente
-- Ingresar número de membresía
-- Guardar un nuevo cliente
-- Seleccionar un cliente desde la tabla
-- Modificar datos de un cliente existente
-- Eliminar un cliente seleccionado
-- Limpiar el formulario
+| Versión | Descripción |
+|------|-------------|
+| Consola | Permite gestionar clientes mediante un menú interactivo desde terminal |
+| Escritorio | Permite gestionar clientes mediante una interfaz gráfica con Java Swing |
+| Web | Permite gestionar clientes desde el navegador usando JSF, JoinFaces y PrimeFaces |
 
 ---
 
@@ -64,16 +52,19 @@ Desde la interfaz se puede:
 
 | Tecnología | Descripción |
 |----------|-------------|
-| Java | Lenguaje principal del proyecto |
-| Spring Boot | Framework principal de la aplicación |
-| Spring Data JPA | Manejo de persistencia y operaciones CRUD |
-| Jakarta Persistence | Definición de entidades JPA |
-| Java Swing | Creación de la interfaz gráfica |
-| FlatLaf | Diseño visual moderno con modo oscuro |
-| Lombok | Reducción de código repetitivo |
+| Java 21 | Lenguaje principal del proyecto |
+| Spring Boot 3.1.2 | Framework principal de la aplicación |
+| Spring Data JPA | Persistencia y operaciones CRUD |
+| MySQL | Base de datos relacional |
 | Maven | Gestión de dependencias y construcción del proyecto |
-| SLF4J Logger | Registro de mensajes en consola |
-| MySQL | Base de datos utilizada para almacenar clientes |
+| Lombok | Reducción de código repetitivo |
+| Java Swing | Interfaz gráfica de escritorio |
+| FlatLaf | Tema oscuro para la versión Swing |
+| Spring Web | Soporte para aplicación web |
+| JoinFaces | Integración de JSF con Spring Boot |
+| PrimeFaces | Componentes visuales para la interfaz web |
+| JSF / XHTML | Construcción de vistas web |
+| SLF4J Logger | Registro de eventos en consola |
 
 ---
 
@@ -84,6 +75,10 @@ src/main/java/st/zona_fit
 │
 ├── ZonaFitApplication.java
 ├── ZonaFitSwing.java
+├── ZonaFitWeb.java
+│
+├── controlador
+│   └── IndexControlador.java
 │
 ├── gui
 │   └── ZonaFitForma.java
@@ -103,45 +98,52 @@ src/main/java/st/zona_fit
 
 ## 🧱 Arquitectura del sistema
 
-El proyecto está estructurado bajo una arquitectura por capas, separando responsabilidades para mantener un código más ordenado, escalable y fácil de mantener.
+El proyecto está organizado bajo una arquitectura por capas para mantener el código más limpio, ordenado y fácil de mantener.
 
 ### 1. Capa principal
 
-Contiene las clases encargadas de iniciar la aplicación.
+Contiene las clases encargadas de iniciar las diferentes versiones del sistema.
 
-- `ZonaFitApplication`: versión de consola.
-- `ZonaFitSwing`: versión con interfaz gráfica Swing.
+- `ZonaFitApplication`: aplicación de consola.
+- `ZonaFitSwing`: aplicación de escritorio con Java Swing.
+- `ZonaFitWeb`: aplicación web con Spring Boot, JoinFaces y PrimeFaces.
 
-### 2. Capa GUI
+### 2. Capa modelo
 
-Contiene la interfaz gráfica del sistema.
-
-- `ZonaFitForma`: ventana principal donde se gestionan los clientes.
-
-### 3. Capa modelo
-
-Contiene la entidad principal del sistema.
+Contiene las entidades del sistema.
 
 - `Cliente`: representa a un cliente del gimnasio.
 
-### 4. Capa repositorio
+### 3. Capa repositorio
 
 Contiene la interfaz encargada de comunicarse con la base de datos.
 
-- `ClienteRepositorio`: extiende de `JpaRepository`.
+- `ClienteRepositorio`: extiende de `JpaRepository` para realizar operaciones CRUD.
 
-### 5. Capa servicio
+### 4. Capa servicio
 
 Contiene la lógica de negocio del sistema.
 
 - `IClienteServicio`: define las operaciones disponibles.
-- `ClienteServicio`: implementa las operaciones del sistema.
+- `ClienteServicio`: implementa las operaciones de gestión de clientes.
+
+### 5. Capa controlador
+
+Contiene la lógica que conecta la vista web con la capa de servicio.
+
+- `IndexControlador`: administra la carga, creación, actualización y eliminación de clientes desde la interfaz web.
+
+### 6. Capa GUI
+
+Contiene la interfaz gráfica de escritorio.
+
+- `ZonaFitForma`: ventana principal desarrollada con Java Swing.
 
 ---
 
 ## 👤 Modelo Cliente
 
-La entidad `Cliente` representa los datos principales de cada cliente registrado en el gimnasio.
+La entidad `Cliente` representa la información principal de cada cliente registrado en el gimnasio.
 
 | Campo | Tipo | Descripción |
 |------|------|-------------|
@@ -152,31 +154,44 @@ La entidad `Cliente` representa los datos principales de cada cliente registrado
 
 ---
 
-## 🧩 Funcionalidades implementadas
+## 🖥️ Versión de consola
 
-| Funcionalidad | Descripción |
-|-------------|-------------|
-| Listar clientes | Muestra todos los clientes registrados en una tabla |
-| Agregar cliente | Permite registrar un nuevo cliente |
-| Modificar cliente | Permite actualizar la información de un cliente existente |
-| Eliminar cliente | Elimina un cliente seleccionado |
-| Limpiar formulario | Limpia los campos de texto y deselecciona la tabla |
-| Selección desde tabla | Al seleccionar un cliente, sus datos se cargan en el formulario |
-| Modo oscuro | La interfaz usa FlatLaf con tema oscuro |
+La primera versión del proyecto funciona mediante un menú interactivo en consola.
+
+```text
+*** Aplicacion Zona Fit (GYM) ***
+
+1. Listar Clientes
+2. Buscar Clientes
+3. Agregar Clientes
+4. Modificar Clientes
+5. Eliminar Clientes
+6. Salir
+
+Elige una opcion:
+```
+
+Desde este menú se pueden realizar las operaciones principales del sistema.
 
 ---
 
-## 🖼️ Interfaz del sistema
+## 🪟 Versión de escritorio con Java Swing
 
-La ventana principal incluye:
+La segunda versión del proyecto incluye una interfaz gráfica de escritorio desarrollada con **Java Swing**.
 
-- Tabla de clientes
-- Campo para nombre
-- Campo para apellido
-- Campo para membresía
-- Botón Guardar
-- Botón Eliminar
-- Botón Limpiar
+Esta versión permite gestionar clientes desde una ventana visual, utilizando campos de texto, botones y una tabla.
+
+### Funcionalidades de la versión Swing
+
+✅ Mostrar clientes en una tabla  
+✅ Agregar nuevos clientes  
+✅ Seleccionar un cliente desde la tabla  
+✅ Editar clientes existentes  
+✅ Eliminar clientes seleccionados  
+✅ Limpiar el formulario  
+✅ Aplicar modo oscuro con FlatLaf  
+
+### Elementos principales de la interfaz Swing
 
 ```text
 -------------------------------------------------
@@ -197,43 +212,63 @@ Membresía:  [________________]
 
 ---
 
-## ⚙️ Instalación y ejecución
+## 🌐 Versión web con PrimeFaces
 
-### 1. Clonar el repositorio
+La versión más reciente del proyecto incluye una interfaz web desarrollada con **JoinFaces, JSF y PrimeFaces**.
 
-```bash
-git clone https://github.com/Sadeths/zona-fit.git
-```
+Esta versión permite administrar los clientes desde el navegador mediante una interfaz moderna con tabla, botones de acción y mensajes visuales.
 
-### 2. Entrar a la carpeta del proyecto
+### Funcionalidades de la versión web
 
-```bash
-cd zona-fit
-```
-
-### 3. Compilar el proyecto
-
-```bash
-mvn clean compile
-```
-
-### 4. Ejecutar la aplicación con interfaz gráfica
-
-```bash
-mvn spring-boot:run -Dspring-boot.run.main-class=st.zona_fit.ZonaFitSwing
-```
-
-También puedes ejecutar directamente la clase:
-
-```text
-st.zona_fit.ZonaFitSwing
-```
-
-desde tu IDE, como IntelliJ IDEA o VS Code.
+✅ Interfaz web con PrimeFaces  
+✅ Tabla de clientes  
+✅ Botón para agregar nuevo cliente  
+✅ Botón para editar clientes  
+✅ Botón para eliminar clientes  
+✅ Mensajes de confirmación  
+✅ Actualización de datos mediante AJAX  
+✅ Integración con Spring Boot  
+✅ Conexión con la misma capa de servicio  
+✅ Persistencia en MySQL usando Spring Data JPA  
 
 ---
 
-## 🔧 Configuración de base de datos
+## 🖼️ Vista previa de la versión web
+
+La interfaz web muestra una tabla con los clientes registrados y opciones para administrar cada registro.
+
+```text
+-------------------------------------------------------------
+| Inicio        + Nuevo Cliente                              |
+-------------------------------------------------------------
+
+                    Zona Fit (GYM)
+
+-------------------------------------------------------------
+| Id | Nombre  | Apellido | Membresía | Acciones             |
+-------------------------------------------------------------
+| 1  | Gabriel | Flores   | 100       | Editar | Eliminar    |
+| 11 | Juana   | Banana   | 200       | Editar | Eliminar    |
+-------------------------------------------------------------
+```
+
+---
+
+## 📋 Operaciones implementadas
+
+| Operación | Descripción |
+|---------|-------------|
+| Listar clientes | Muestra todos los clientes registrados |
+| Buscar cliente | Permite consultar un cliente por ID |
+| Agregar cliente | Registra un nuevo cliente |
+| Modificar cliente | Actualiza los datos de un cliente existente |
+| Eliminar cliente | Elimina un cliente del sistema |
+| Limpiar formulario | Limpia los campos del formulario |
+| Actualizar tabla | Refresca la información mostrada en pantalla |
+
+---
+
+## ⚙️ Configuración de base de datos
 
 Antes de ejecutar el proyecto, se debe configurar la conexión a la base de datos en el archivo:
 
@@ -263,14 +298,18 @@ El proyecto utiliza dependencias como:
 
 ```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
+    <groupId>org.joinfaces</groupId>
+    <artifactId>primefaces-spring-boot-starter</artifactId>
 </dependency>
 
 <dependency>
-    <groupId>com.formdev</groupId>
-    <artifactId>flatlaf</artifactId>
-    <version>3.5.1</version>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
 
 <dependency>
@@ -282,114 +321,174 @@ El proyecto utiliza dependencias como:
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
-    <optional>true</optional>
+    <scope>provided</scope>
+</dependency>
+
+<dependency>
+    <groupId>com.formdev</groupId>
+    <artifactId>flatlaf</artifactId>
+    <version>3.0</version>
 </dependency>
 ```
 
 ---
 
-## 🚀 Flujo de uso de la aplicación
+## ▶️ Instalación y ejecución
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Sadeths/zona-fit.git
+```
+
+### 2. Entrar a la carpeta del proyecto
+
+```bash
+cd zona-fit
+```
+
+### 3. Compilar el proyecto
+
+```bash
+mvn clean compile
+```
+
+---
+
+## ▶️ Ejecutar versión de consola
+
+```bash
+mvn spring-boot:run -Dspring-boot.run.main-class=st.zona_fit.ZonaFitApplication
+```
+
+---
+
+## ▶️ Ejecutar versión de escritorio Swing
+
+```bash
+mvn spring-boot:run -Dspring-boot.run.main-class=st.zona_fit.ZonaFitSwing
+```
+
+También puedes ejecutar directamente la clase:
+
+```text
+st.zona_fit.ZonaFitSwing
+```
+
+desde tu IDE, como IntelliJ IDEA o VS Code.
+
+---
+
+## ▶️ Ejecutar versión web
+
+```bash
+mvn spring-boot:run -Dspring-boot.run.main-class=st.zona_fit.ZonaFitWeb
+```
+
+Luego abre el navegador en:
+
+```text
+http://localhost:8080
+```
+
+---
+
+## 🚀 Flujo de uso de la versión web
 
 ### Agregar cliente
 
-1. Escribir el nombre.
-2. Escribir el apellido.
-3. Ingresar el número de membresía.
-4. Presionar el botón **Guardar**.
-5. El cliente aparecerá automáticamente en la tabla.
+1. Presionar el botón **Nuevo Cliente**.
+2. Ingresar el nombre.
+3. Ingresar el apellido.
+4. Ingresar el número de membresía.
+5. Guardar el registro.
+6. El cliente aparecerá en la tabla.
 
----
+### Editar cliente
 
-### Modificar cliente
-
-1. Seleccionar un cliente desde la tabla.
-2. Sus datos se cargarán en el formulario.
-3. Modificar los campos necesarios.
-4. Presionar **Guardar**.
-5. La tabla se actualizará con los nuevos datos.
-
----
+1. Presionar el botón **Editar** en el registro deseado.
+2. Modificar los datos necesarios.
+3. Guardar los cambios.
+4. La tabla se actualizará con la nueva información.
 
 ### Eliminar cliente
 
-1. Seleccionar un cliente desde la tabla.
-2. Presionar el botón **Eliminar**.
-3. El cliente será eliminado de la base de datos.
-4. La tabla se actualizará automáticamente.
-
----
-
-### Limpiar formulario
-
-1. Presionar el botón **Limpiar**.
-2. Los campos se vaciarán.
-3. Se quitará la selección activa de la tabla.
+1. Presionar el botón **Eliminar** en el registro deseado.
+2. El sistema eliminará el cliente seleccionado.
+3. La tabla se actualizará automáticamente.
 
 ---
 
 ## 🎯 Objetivo del proyecto
 
-El objetivo principal de este proyecto es practicar el desarrollo de aplicaciones con **Java Spring Boot**, aplicando conceptos fundamentales de backend y complementándolos con una interfaz gráfica de escritorio usando **Java Swing**.
+El objetivo principal de este proyecto es practicar el desarrollo de aplicaciones con **Java Spring Boot**, implementando un sistema CRUD funcional y ampliándolo progresivamente desde consola hasta una aplicación web.
 
 Este proyecto permite reforzar conocimientos como:
 
 - Programación orientada a objetos
 - Arquitectura por capas
-- Creación de entidades JPA
-- Uso de repositorios con Spring Data JPA
-- Implementación de servicios e interfaces
-- Inyección de dependencias con Spring
-- Persistencia de datos en base de datos
-- Creación de interfaces gráficas con Java Swing
-- Uso de tablas, formularios y eventos
-- Integración de Spring Boot con aplicaciones de escritorio
+- Entidades JPA
+- Repositorios con Spring Data JPA
+- Servicios e interfaces
+- Inyección de dependencias
+- Persistencia de datos con MySQL
+- Aplicaciones de consola con Spring Boot
+- Interfaces gráficas con Java Swing
+- Aplicaciones web con JSF y PrimeFaces
+- Uso de Maven
+- Uso de Lombok
+- Manejo de formularios y tablas
+- Actualización de componentes con AJAX
 
 ---
 
 ## 💡 Aprendizajes obtenidos
 
-Durante el desarrollo de este proyecto se aplicaron conocimientos importantes como:
+Durante el desarrollo de este proyecto se aplicaron y reforzaron conocimientos importantes como:
 
 - Crear una aplicación Spring Boot desde cero.
-- Implementar una entidad con JPA.
-- Usar `JpaRepository` para operaciones CRUD.
-- Crear servicios para separar la lógica del sistema.
-- Inyectar dependencias con `@Autowired`.
-- Crear una interfaz gráfica con Swing.
-- Usar `JTable` para mostrar información.
-- Manejar eventos de botones.
-- Seleccionar registros desde una tabla.
-- Actualizar datos desde un formulario.
-- Aplicar un tema visual oscuro con FlatLaf.
-- Ejecutar una aplicación Spring Boot sin servidor web.
+- Definir una entidad con JPA.
+- Usar `JpaRepository` para simplificar operaciones CRUD.
+- Crear una capa de servicio para separar la lógica del sistema.
+- Implementar interfaces para organizar mejor el código.
+- Inyectar dependencias con Spring.
+- Crear una interfaz gráfica con Java Swing.
+- Usar `JTable` para mostrar datos.
+- Aplicar un tema oscuro con FlatLaf.
+- Integrar JSF con Spring Boot usando JoinFaces.
+- Usar PrimeFaces para crear componentes web.
+- Manejar eventos desde botones web.
+- Actualizar tablas mediante AJAX.
+- Conectar una aplicación Java con MySQL.
 
 ---
 
 ## 📈 Posibles mejoras futuras
 
-🚀 Crear una API REST para consumir los datos desde frontend web  
-🚀 Agregar validaciones más avanzadas en los campos  
-🚀 Implementar manejo de excepciones personalizado  
 🚀 Agregar buscador de clientes por nombre o membresía  
-🚀 Implementar reportes de clientes activos  
+🚀 Agregar validaciones avanzadas en formularios  
+🚀 Implementar manejo de excepciones personalizado  
+🚀 Crear una API REST para consumir desde frontend moderno  
 🚀 Agregar autenticación de usuarios  
-🚀 Crear pruebas unitarias  
-🚀 Agregar diseño más personalizado a la interfaz  
+🚀 Crear roles de administrador y empleado  
+🚀 Agregar reportes de clientes activos  
 🚀 Exportar listado de clientes a PDF o Excel  
 🚀 Crear dashboard con estadísticas del gimnasio  
+🚀 Agregar pruebas unitarias  
+🚀 Mejorar el diseño visual de la versión web  
+🚀 Desplegar la aplicación en la nube  
 
 ---
 
 ## 📌 Estado del proyecto
 
-✅ Proyecto funcional  
+✅ Aplicación de consola funcional  
+✅ Interfaz gráfica con Swing agregada  
+✅ Versión web con PrimeFaces agregada  
 ✅ CRUD completo implementado  
-✅ Interfaz gráfica agregada  
-✅ Modo oscuro implementado  
-✅ Base de datos integrada con Spring Data JPA  
+✅ Base de datos conectada con MySQL  
 ✅ Arquitectura por capas aplicada  
-✅ Listo para subir a GitHub  
-✅ Ideal para portafolio de Java / Spring Boot  
+✅ Proyecto listo para portafolio en GitHub  
 
 ---
 
@@ -397,14 +496,13 @@ Durante el desarrollo de este proyecto se aplicaron conocimientos importantes co
 
 **Samahel Thomas**
 
-Proyecto desarrollado como parte de mi aprendizaje en **Java**, **Spring Boot**, **Spring Data JPA** y desarrollo de aplicaciones de escritorio con **Swing**.
+Proyecto desarrollado como parte de mi aprendizaje en **Java**, **Spring Boot**, **Spring Data JPA**, **MySQL**, **Swing** y **PrimeFaces**.
 
 - GitHub: [Sadeths](https://github.com/Sadeths)
 - LinkedIn: [Samahel Thomas](https://www.linkedin.com/in/samahel-thomas-7330211ba)
-
 
 ---
 
 # 🏋️‍♂️ Zona Fit
 
-Sistema de gestión de clientes para gimnasio desarrollado con **Java Spring Boot**, **Spring Data JPA**, **MySQL** y **Java Swing**.
+Sistema CRUD de gestión de clientes para gimnasio desarrollado con **Java Spring Boot**, **Spring Data JPA**, **MySQL**, **Java Swing**, **JSF**, **JoinFaces** y **PrimeFaces**.
